@@ -22,7 +22,7 @@ I'm a full-stack developer with nearly four years of experience building and mai
 - [Gagmat](https://gagmat.com/): e-commerce platform
 - [Happenstance](https://www.happenstance.com/): online shopping website
 - [Shocksorb](https://shocksorb.com/): child product of Happenstance
-- MwithM: e-commerce web app with a delivery app, where I built most of the APIs
+- MwithM: e-commerce web app with a delivery app, where I worked on the APIs
 
 Most of my project code is in private repositories, so the portfolio describes what I built in each one.
 
