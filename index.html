@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Releesha Azeez, a Laravel and Vue.js full stack developer.">
+</head>
+<body>
+<title>Releesha Azeez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark editorial one-pager. Big name hero with a mono "spec sheet", skills filter, three flagship case studies with module sketches, typed timeline. */
+:root {
+  --bg: #0b0e13;
+  --raise: #121720;
+  --raise-2: #181f2b;
+  --line: #242d3b;
+  --fg: #e8ecf3;
+  --dim: #9ba7ba;
+  --faint: #6c788b;
+  --accent: #f0b955;
+  --accent-ink: #1b1406;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; line-height: 1.05; }
+p { margin: 0; }
+.mono { font-family: var(--mono); }
+.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+section { padding-block: clamp(52px, 8vw, 96px); border-top: 1px solid var(--line); }
+section.first { border-top: 0; }
+h2 { font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 700; margin-bottom: 28px; max-width: 18ch; }
+.lede { color: var(--dim); max-width: 62ch; font-size: 1.05rem; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(11, 14, 19, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap; padding-block: 12px; }
+.brand { font-family: var(--display); font-weight: 700; text-decoration: none; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 4px; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--dim); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
+.nav a:hover { color: var(--fg); background: var(--raise); }
+
+/* hero */
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(48px, 7vw, 88px); }
+.hero-grid { display: grid; gap: 40px; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: end; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.eyebrow b { color: var(--accent); font-weight: 500; }
+h1 { font-size: clamp(3rem, 11vw, 6.4rem); font-weight: 800; line-height: 0.92; letter-spacing: -0.04em; }
+.hero p.statement { margin-top: 26px; font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--dim); max-width: 38ch; line-height: 1.5; }
+.hero p.statement strong { color: var(--fg); font-weight: 500; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; text-decoration: none; padding: 12px 18px; border-radius: 8px; border: 1px solid var(--line); color: var(--fg); background: var(--raise); transition: border-color .15s, background .15s; }
+.btn:hover { border-color: var(--faint); background: var(--raise-2); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 500; }
+.btn.primary:hover { background: #f6c971; }
+.sheet { background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 6px 18px; margin: 0; font-family: var(--mono); font-size: 13px; }
+.sheet-head { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--faint); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+.row { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; padding: 11px 0; border-bottom: 1px dashed var(--line); }
+.row:last-child { border-bottom: 0; }
+.row dt { color: var(--faint); }
+.row dd { margin: 0; color: var(--fg); overflow-wrap: anywhere; }
+.row dd em { font-style: normal; color: var(--accent); }
+
+/* about */
+.about-grid { display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.about-grid p + p { margin-top: 16px; }
+.bring { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.bring div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; }
+.bring dt, .bring h3 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); line-height: 1.5; padding-top: 3px; }
+.bring dd { margin: 0; color: var(--dim); }
+.bring-list { margin: 0; }
+
+/* skills */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filters button { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--dim); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; }
+.filters button:hover { color: var(--fg); border-color: var(--faint); }
+.filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li { font-family: var(--mono); font-size: 13px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--raise); color: var(--fg); }
+.chips li small { color: var(--faint); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 8px; }
+.chips li.core { border-color: var(--accent); }
+.note { color: var(--faint); font-size: 13px; margin-top: 18px; font-family: var(--mono); }
+.note i { display: inline-block; width: 10px; height: 10px; border: 1px solid var(--accent); border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
+
+/* work */
+.tree { font-family: var(--mono); font-size: 13px; background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 48px; display: grid; gap: 6px; }
+.tree div { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.tree .indent { padding-left: 26px; position: relative; }
+.tree .indent::before { content: "└"; position: absolute; left: 4px; color: var(--faint); }
+.tree b { font-weight: 500; }
+.tree span { color: var(--faint); }
+.case { display: grid; gap: 28px; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); padding-block: 44px; border-top: 1px solid var(--line); }
+.case:first-of-type { border-top: 0; padding-top: 0; }
+.case h3 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 700; margin-bottom: 8px; }
+.case .tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
+.case .summary { color: var(--dim); }
+.case ul.did { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.case ul.did li { padding-left: 22px; position: relative; font-size: 15px; }
+.case ul.did li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 1px; background: var(--accent); }
+.visit { display: inline-block; margin-top: 22px; font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+.visit:hover { border-bottom-color: var(--accent); }
+.sketch { background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 20px; align-self: start; min-width: 0; }
+.sketch-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.flow { display: flex; align-items: stretch; gap: 0; }
+.node { flex: 1 1 0; min-width: 0; border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 12px; font-size: 14px; line-height: 1.35; display: flex; flex-direction: column; justify-content: center; }
+.node small { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+.node.hub { border-color: var(--accent); }
+.node.hub small { color: var(--accent); }
+.arr { flex: 0 0 26px; align-self: center; height: 1px; background: var(--faint); position: relative; }
+.arr::after { content: ""; position: absolute; right: 0; top: -3px; border-left: 6px solid var(--faint); border-top: 3.5px solid transparent; border-bottom: 3.5px solid transparent; }
+.stack { display: grid; gap: 8px; flex: 1 1 0; min-width: 0; }
+.stack .node { flex: none; }
+.sats { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.sats p { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+.sats .chips li { font-size: 12px; padding: 6px 10px; background: var(--bg); }
+.pair { display: grid; gap: 20px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 44px; border-top: 1px solid var(--line); }
+.mini { background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.mini h3 { font-size: 1.6rem; font-weight: 700; }
+.mini .sheet { background: var(--bg); font-size: 12px; margin-top: auto; }
+.mini .summary { color: var(--dim); font-size: 15px; }
+
+/* path */
+.path { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.path li { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 8px 32px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.when { font-family: var(--mono); font-size: 13px; color: var(--accent); line-height: 1.6; }
+.when span { display: block; color: var(--faint); }
+.path h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 4px; }
+.path .org { color: var(--dim); margin-bottom: 14px; }
+.path ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--dim); font-size: 15px; }
+.path ul li { display: list-item; padding: 0; border: 0; grid-template-columns: none; }
+.path ul li::marker { color: var(--faint); }
+.edu { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 48px; }
+.edu div { background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.edu .mono { font-size: 12px; color: var(--accent); letter-spacing: 0.08em; }
+.edu h3 { font-size: 1.15rem; font-weight: 600; margin: 8px 0 4px; line-height: 1.25; }
+.edu p { color: var(--dim); font-size: 14px; }
+.langs { margin-top: 28px; font-family: var(--mono); font-size: 13px; color: var(--dim); }
+.langs b { color: var(--faint); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px; margin-right: 12px; }
+
+/* contact */
+.contact h2 { max-width: 14ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; font-family: var(--mono); font-size: 12px; color: var(--faint); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+
+@media (max-width: 860px) {
+  .hero-grid, .about-grid, .case { grid-template-columns: minmax(0, 1fr); }
+  .pair, .edu { grid-template-columns: minmax(0, 1fr); }
+  .path li { grid-template-columns: minmax(0, 1fr); }
+  .bring div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .flow { flex-direction: column; }
+  .arr { flex: 0 0 22px; width: 1px; height: 22px; }
+  .arr::after { right: auto; left: -3px; top: auto; bottom: 0; border-left: 3.5px solid transparent; border-right: 3.5px solid transparent; border-top: 6px solid var(--faint); border-bottom: 0; }
+  .stack { width: 100%; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Releesha<span>.</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Projects</a>
+      <a href="#path">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero first">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><b>Full Stack Developer</b><span>Laravel</span><span>Vue.js</span></div>
+        <h1>Releesha<br>Azeez</h1>
+        <p class="statement">I build <strong>e-commerce platforms</strong> in Laravel and Vue.js, the <strong>REST APIs</strong> behind their mobile apps, and the background jobs that keep them running.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See my projects</a>
+          <a class="btn" href="https://www.linkedin.com/in/releesha-azeez" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/releeshaa" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <dl class="sheet" aria-label="At a glance">
+        <div class="sheet-head"><span>profile.sheet</span><span>2026</span></div>
+        <div class="row"><dt>role</dt><dd>Full Stack Developer &amp; Team Lead</dd></div>
+        <div class="row"><dt>last</dt><dd>Softius Technologies, Oct 2021 to Aug 2025</dd></div>
+        <div class="row"><dt>stack</dt><dd>PHP, Laravel, Vue.js, MySQL</dd></div>
+        <div class="row"><dt>led</dt><dd>a team of 4 developers</dd></div>
+        <div class="row"><dt>based</dt><dd>Al Ain, UAE</dd></div>
+        <div class="row"><dt>status</dt><dd><em>Open to new roles</em></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="kicker">About</div>
+      <h2>Backend depth, frontend range, and a habit of owning the feature.</h2>
+      <div class="about-grid">
+        <div>
+          <p class="lede">I'm a full stack developer with nearly four years of production experience designing, building and maintaining web applications with Laravel and Vue.js.</p>
+          <p class="lede">Most of that time went into e-commerce: notification systems, abandoned carts, product reviews, exports, and the REST APIs that a mobile app depends on. I also led a team of four, which meant code reviews, mentoring, and sorting out production issues as they appeared.</p>
+          <p class="lede">I learn new tools quickly and I work in Agile teams with Jira.</p>
+        </div>
+        <dl class="bring">
+            <div><dt>API ownership</dt><dd>Designed endpoints, HTTP methods and request and response structures on my own, working from UI and UX requirements.</dd></div>
+            <div><dt>Security</dt><dd>Laravel Sanctum authentication, API keys, middleware, and permission checks.</dd></div>
+            <div><dt>Mobile integration</dt><dd>Tested APIs in Postman, debugged alongside mobile developers, and wrote the API documentation they integrated against.</dd></div>
+            <div><dt>Automation</dt><dd>Custom Artisan commands, scheduled tasks and reusable macros that other features build on.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="kicker">Skills</div>
+      <h2>What I work with</h2>
+      <div class="filters" role="group" aria-label="Filter skills">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="backend" aria-pressed="false">Backend</button>
+        <button type="button" data-f="frontend" aria-pressed="false">Frontend</button>
+        <button type="button" data-f="data" aria-pressed="false">Data</button>
+        <button type="button" data-f="tools" aria-pressed="false">Tools</button>
+        <button type="button" data-f="more" aria-pressed="false">Other languages</button>
+      </div>
+      <ul class="chips" id="skillList">
+        <li class="core" data-c="backend">PHP</li>
+        <li class="core" data-c="backend">Laravel</li>
+        <li class="core" data-c="backend">REST APIs</li>
+        <li data-c="backend">Laravel Sanctum</li>
+        <li data-c="backend">Laravel WebSockets</li>
+        <li data-c="backend">Pusher</li>
+        <li data-c="backend">Artisan commands</li>
+        <li data-c="backend">Scheduled tasks</li>
+        <li data-c="backend">Inertia.js</li>
+        <li data-c="backend">Twig</li>
+        <li class="core" data-c="frontend">Vue.js</li>
+        <li class="core" data-c="frontend">JavaScript</li>
+        <li data-c="frontend">HTML</li>
+        <li data-c="frontend">CSS</li>
+        <li data-c="frontend">Tailwind CSS</li>
+        <li data-c="frontend">Element Plus</li>
+        <li data-c="frontend">WordPress</li>
+        <li class="core" data-c="data">MySQL</li>
+        <li data-c="data">PostgreSQL</li>
+        <li data-c="data">Microsoft SQL Server</li>
+        <li data-c="data">Navicat</li>
+        <li data-c="data">JSON</li>
+        <li data-c="tools">Git</li>
+        <li data-c="tools">Postman</li>
+        <li data-c="tools">Jira</li>
+        <li data-c="tools">VS Code</li>
+        <li data-c="tools">Android Studio</li>
+        <li data-c="tools">Eclipse</li>
+        <li data-c="more">Kotlin</li>
+        <li data-c="more">Java</li>
+        <li data-c="more">Python</li>
+        <li data-c="more">C</li>
+        <li data-c="more">C++</li>
+        <li data-c="more">R</li>
+      </ul>
+      <p class="note"><i></i>Outlined: what I used day to day at Softius.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="kicker">Projects</div>
+      <h2>Selected work</h2>
+      <p class="lede" style="margin-bottom:32px">The first three projects sit in the same family of businesses. Most of this work lives in private repositories, so I describe what I built here and link to the live sites where they exist.</p>
+
+      <div class="tree" aria-label="How these businesses relate">
+        <div><b>Gagmat</b><span>E-commerce platform</span></div>
+        <div><b>Happenstance</b><span>Sibling company, online shopping</span></div>
+        <div class="indent"><b>Shocksorb</b><span>Child product of Happenstance</span></div>
+      </div>
+
+      <article class="case">
+        <div>
+          <div class="tag">E-commerce platform / Laravel, Vue.js</div>
+          <h3>Gagmat</h3>
+          <p class="summary">A full stack e-commerce platform covering customer-facing features, order management and admin functionality. I worked across the backend and the frontend and helped deliver platform enhancements.</p>
+          <ul class="did">
+            <li>Notifications and configurable notification templates</li>
+            <li>Abandoned Cart, Product Reviews and waiting lists</li>
+            <li>Excel exports for downloadable reports</li>
+            <li>REST API endpoints used by the mobile app across different areas of the platform</li>
+          </ul>
+          <a class="visit" href="https://gagmat.com/" target="_blank" rel="noopener">Visit Gagmat &#8599;</a>
+        </div>
+        <div class="sketch">
+          <div class="sketch-label"><span>Module sketch</span><span>illustrative</span></div>
+          <div class="flow" role="img" aria-label="Customers use the Vue.js storefront, which talks to the Laravel application, which serves the admin dashboard and mobile app">
+            <div class="node"><small>Customers</small>Vue.js storefront</div>
+            <i class="arr"></i>
+            <div class="node hub"><small>Core</small>Laravel application</div>
+            <i class="arr"></i>
+            <div class="stack">
+              <div class="node"><small>Staff</small>Admin and orders</div>
+              <div class="node"><small>Mobile</small>REST API</div>
+            </div>
+          </div>
+          <div class="sats">
+            <p>Built on top of the core</p>
+            <ul class="chips">
+              <li>Notifications</li><li>Abandoned Cart</li><li>Reviews</li><li>Excel exports</li><li>Waiting lists</li><li>Artisan commands</li><li>Scheduled tasks</li><li>Macros</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <div class="tag">Online shopping site / Sibling of Gagmat</div>
+          <h3>Happenstance</h3>
+          <p class="summary">An online shopping website built as a sibling business to Gagmat. I worked on the admin dashboard and on the pages shoppers use, from their account to the outcome of an order.</p>
+          <ul class="did">
+            <li>Admin dashboard</li>
+            <li>Website theme</li>
+            <li>Excel exports</li>
+            <li>My Account and My Orders pages</li>
+            <li>Order thank-you and order failed pages</li>
+            <li>Return and exchange pages</li>
+          </ul>
+          <a class="visit" href="https://www.happenstance.com/" target="_blank" rel="noopener">Visit Happenstance &#8599;</a>
+        </div>
+        <div class="sketch">
+          <div class="sketch-label"><span>Order journey</span><span>illustrative</span></div>
+          <div class="flow" role="img" aria-label="A shopper places an order and lands on a thank-you page or an order failed page, and can later start a return or exchange">
+            <div class="node"><small>Shopper</small>Theme and My Account</div>
+            <i class="arr"></i>
+            <div class="node hub"><small>Order</small>Placed</div>
+            <i class="arr"></i>
+            <div class="stack">
+              <div class="node"><small>Success</small>Order thank-you page</div>
+              <div class="node"><small>Failure</small>Order failed page</div>
+            </div>
+          </div>
+          <div class="sats">
+            <p>Around the order</p>
+            <ul class="chips">
+              <li>My Orders</li><li>Returns</li><li>Exchanges</li><li>Admin dashboard</li><li>Excel exports</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <div class="tag">Child product of Happenstance</div>
+          <h3>Shocksorb</h3>
+          <p class="summary">A separate site that presents itself publicly as Shocksorb by Happenstance. I worked on both sides of the product.</p>
+          <ul class="did">
+            <li>Website theme: frontend development and customisation</li>
+            <li>Admin dashboard: frontend and backend development</li>
+          </ul>
+          <a class="visit" href="https://shocksorb.com/" target="_blank" rel="noopener">Visit Shocksorb &#8599;</a>
+        </div>
+        <div class="sketch">
+          <div class="sketch-label"><span>Where my work sits</span><span>illustrative</span></div>
+          <div class="flow" role="img" aria-label="Shocksorb, a child product of Happenstance, has a website theme and an admin dashboard that I built">
+            <div class="node"><small>Parent</small>Happenstance</div>
+            <i class="arr"></i>
+            <div class="node hub"><small>Product</small>Shocksorb</div>
+            <i class="arr"></i>
+            <div class="stack">
+              <div class="node"><small>Frontend</small>Website theme</div>
+              <div class="node"><small>Full stack</small>Admin dashboard</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <div class="tag">E-commerce web app / Delivery app</div>
+          <h3>MwithM</h3>
+          <p class="summary">An e-commerce web application with a companion delivery app. I developed most of the APIs the delivery app depends on.</p>
+          <ul class="did">
+            <li>Designed and built most of the APIs for the delivery app</li>
+            <li>Worked alongside the web application the delivery app serves</li>
+          </ul>
+        </div>
+        <div class="sketch">
+          <div class="sketch-label"><span>Where my work sits</span><span>illustrative</span></div>
+          <div class="flow" role="img" aria-label="The delivery app calls APIs that I built, which connect to the MwithM e-commerce web application">
+            <div class="node"><small>Mobile</small>Delivery app</div>
+            <i class="arr"></i>
+            <div class="node hub"><small>Mostly mine</small>APIs</div>
+            <i class="arr"></i>
+            <div class="node"><small>Web</small>E-commerce application</div>
+          </div>
+        </div>
+      </article>
+
+      <div class="pair">
+        <article class="mini">
+          <div class="tag mono" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)">Data-collection software</div>
+          <h3>bPro</h3>
+          <p class="summary">Data-collection software used in Kenya. I contributed design changes and feature enhancements, and as a freelance WordPress developer I revamped the bPro App website.</p>
+          <dl class="sheet">
+            <div class="row"><dt>where</dt><dd>Kenya, Africa</dd></div>
+            <div class="row"><dt>work</dt><dd>Design changes, feature enhancements, website revamp</dd></div>
+            <div class="row"><dt>site</dt><dd><a href="https://www.bproapp.com" target="_blank" rel="noopener">bproapp.com</a></dd></div>
+          </dl>
+        </article>
+        <article class="mini">
+          <div class="tag mono" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)">Healthcare survey app</div>
+          <h3>Unarv</h3>
+          <p class="summary">A survey application built to gather healthcare-status information for children in Kannur district, Kerala. I implemented a pseudo Android application in Kotlin.</p>
+          <dl class="sheet">
+            <div class="row"><dt>where</dt><dd>Kannur district, Kerala</dd></div>
+            <div class="row"><dt>work</dt><dd>Pseudo Android application</dd></div>
+            <div class="row"><dt>stack</dt><dd>Kotlin</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="path">
+    <div class="wrap">
+      <div class="kicker">Experience</div>
+      <h2>Where I've worked</h2>
+      <ol class="path">
+        <li>
+          <div class="when">Oct 2021 to Aug 2025<span>3 yrs 10 mos</span></div>
+          <div>
+            <h3>Full Stack Developer &amp; Team Lead</h3>
+            <p class="org">Softius Technologies Pvt. Ltd.</p>
+            <ul>
+              <li>Led a team of four developers with technical guidance, mentoring, task coordination and code reviews.</li>
+              <li>Designed, built and maintained full stack features with Laravel and PHP on the backend and Vue.js on the frontend.</li>
+              <li>Developed core e-commerce modules, including Notifications, Abandoned Cart and Product Reviews.</li>
+              <li>Built and maintained the REST APIs used by the platform's mobile application.</li>
+              <li>Wrote Laravel commands, scheduled tasks and reusable macro functions to automate processes.</li>
+              <li>Worked in Agile with Jira, and diagnosed and fixed issues in live applications.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Nov 2020 to Apr 2021<span>Freelance</span></div>
+          <div>
+            <h3>WordPress Developer</h3>
+            <p class="org">Freelance</p>
+            <ul><li>Revamped the bPro App website.</li></ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">Feb 2020 to May 2020<span>Internship</span></div>
+          <div>
+            <h3>Android Developer Intern</h3>
+            <p class="org">Etuwa Concepts Pvt. Ltd.</p>
+            <ul>
+              <li>Integrated RESTful web service APIs.</li>
+              <li>Worked within an Agile development process.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <div class="edu">
+        <div>
+          <div class="mono">2018 to 2020</div>
+          <h3>Master of Computer Applications</h3>
+          <p>Chinmaya Institute of Technology</p>
+        </div>
+        <div>
+          <div class="mono">2015 to 2018</div>
+          <h3>Bachelor of Computer Applications</h3>
+          <p>Chinmaya Arts and Science College</p>
+        </div>
+      </div>
+      <p class="langs"><b>Languages</b>English, Malayalam, Hindi, Urdu</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="kicker">Contact</div>
+      <h2>Open to new roles</h2>
+      <p class="lede">I'm looking for a full stack or backend role on a Laravel and Vue.js team. LinkedIn is the quickest way to reach me.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/releesha-azeez" target="_blank" rel="noopener">Message me on LinkedIn &#8599;</a>
+        <a class="btn" href="https://github.com/releeshaa" target="_blank" rel="noopener">GitHub &#8599;</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Releesha Azeez V P</span>
+    <span>Updated November 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.filters button');
+  var items = document.querySelectorAll('#skillList li');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      items.forEach(function (li) {
+        li.hidden = !(f === 'all' || li.getAttribute('data-c') === f);
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
